@@ -8,8 +8,7 @@
 * 直到输入Exec后，Redis会将之前的命令队列中的命令依次执行
 * 组队的过程中可以通过discard来放弃组队
 * 如下图：
-
-![a1712076648a042f790afe20c9633deb.png](en-resource://database/2129:1)
+* ![redis事务执行过程]([https://github.com/kocdaniel/BigData/blob/master/img/redis%E4%BA%8B%E5%8A%A1%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B.png](https://github.com/kocdaniel/BigData/blob/master/img/redis事务执行过程.png))
 
 ## 事务的错误处理
 1. 组队时错误：组队中某个命令出现错误，执行时整个的所有队列都会取消而不执行
