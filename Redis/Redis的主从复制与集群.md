@@ -1,7 +1,8 @@
 # 主从复制
 ## 定义
 * 主从复制，就是主机数据更新后根据配置和策略，**自动同步到备机的master/slaver机制，Master以写为主，Slave以读为主**
-* ![b839637a8cf89095f353bd225255f5a7.png](en-resource://database/2365:1)
+
+![https://github.com/kocdaniel/BigData/blob/master/img/%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E6%9C%BA%E5%88%B6.png](https://github.com/kocdaniel/BigData/blob/master/img/主从复制机制.png)
 
 ## 用处
 * 读写分离，性能扩展
@@ -20,7 +21,8 @@
 * 主机立刻进行存盘操作，发送RDB文件，给从机
 * 从机收到RDB文件后，进行全盘加载
 * 之后每次主机的写操作，都会立刻发送给从机，从机执行相同的命令
-* ![ffbe243fad15b1d5b47e0fa6b3e69458.png](en-resource://database/2367:1)
+
+![https://github.com/kocdaniel/BigData/blob/master/img/%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%8E%9F%E7%90%86.png](https://github.com/kocdaniel/BigData/blob/master/img/主从复制原理.png)
 
 ### 薪火相传
 * 上一个slave可以是下一个slave的Master，slave同样可以接收其他slaves的连接和同步请求，那么该slave作为了链条中下一个的master, **可以有效减轻master的写压力,去中心化降低风险**。
@@ -34,7 +36,8 @@
 ### 哨兵模式(sentinel)
 * 反客为主的自动版，能够后台监控主机是否故障，如果故障了根据投票数自动将从库转换为主库
 * 当主机重新上线时，sentinel会向其发送slaveof命令，让其成为新主的从
-* ![3221b9a12882f49b0d840923b0e17812.png](en-resource://database/2373:1)
+
+![https://github.com/kocdaniel/BigData/blob/master/img/%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F.png](https://github.com/kocdaniel/BigData/blob/master/img/哨兵模式.png)
 
 * 选择条件依次为
 1. 选择优先级靠前的：优先级在redis.conf中的slave-priority 100设置
@@ -59,7 +62,9 @@
 * 配从不配主
 * 新建redis6379.conf配置文件（文件名自定义），使用include包含原redis.conf
 * 并配置如下信息：
-* ![5a0081acdf5b1fc4df69d4b08a21d39d.png](en-resource://database/2375:1)
+
+![https://github.com/kocdaniel/BigData/blob/master/img/%E4%B8%80%E4%B8%BB%E4%BA%8C%E4%BB%86%E9%85%8D%E7%BD%AE.png](https://github.com/kocdaniel/BigData/blob/master/img/一主二仆配置.png)
+
 ```
 include /root/myredis/redis.conf    // include
 pidfile "/var/run/redis_6379.pid"   // pidfile
@@ -87,7 +92,9 @@ dbfilename "dump6379.rdb"  // rdb名称
 3. 在opt目录下执行：  `gem install --local redis-3.2.0.gem`
 4. 制作6个实例，6379,6380,6381,6389,6390,6391（6389为6379的从，6390为6380的从，6391为6381的从）
 5. 拷贝多个redis.conf文件，在里面配置信息，加入集群
-![9a4f8db5a3dbfa63466200e0e1365779.png](en-resource://database/2379:1)
+
+![https://github.com/kocdaniel/BigData/blob/master/img/%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE.png](https://github.com/kocdaniel/BigData/blob/master/img/集群配置.png)
+
 ```
 cluster-enabled yes    打开集群模式
 cluster-config-file  nodes-6379.conf  设定节点配置文件名
@@ -95,7 +102,9 @@ cluster-node-timeout 15000   设定节点失联时间，超过该时间（毫秒
 ```
 6. 将六个节点合成一个集群
 * 组合之前，确保所有redis实例启动后，node-xxxx.conf文件都生成正常
-![59543086b95c05e3427c029df056f1eb.png](en-resource://database/2385:1)
+
+![https://github.com/kocdaniel/BigData/blob/master/img/%E7%94%9F%E6%88%90node-xxxx.conf%E6%96%87%E4%BB%B6.png](https://github.com/kocdaniel/BigData/blob/master/img/生成node-xxxx.conf文件.png)
+
 * 合体
 ```
 cd  /opt/redis-3.2.5/src  // 切换到src目录下，因为要执行src下的redis-trib.rb命令
@@ -105,14 +114,19 @@ cd  /opt/redis-3.2.5/src  // 切换到src目录下，因为要执行src下的red
 ./redis-trib.rb create --replicas 1 192.168.1.100:6379 192.168.1.100:6380 192.168.1.100:6381 192.168.1.100:6389 192.168.1.100:6390 192.168.1.100:6391
 ```
 7. 通过 `cluster nodes` 命令查看集群信息，可通过红框框住的序列号找到主从关系
-![13b8f3cace143297f45abec4ae380ace.png](en-resource://database/2389:1)
+
+![https://github.com/kocdaniel/BigData/blob/master/img/cluster%20nodes.png](https://github.com/kocdaniel/BigData/blob/master/img/cluster nodes.png)
 
 ## 什么是slots
-![76f358683c03ac609a9ed5a8af5f88f3.png](en-resource://database/2393:1)
+
+![1](https://github.com/kocdaniel/BigData/blob/master/img/slots.png)
+
 * 一个 Redis 集群包含 16384 个插槽（hash slot），数据库中的每个键都属于这 16384 个插槽的其中一个
 * 集群使用公式 `CRC16(key) % 16384` 来计算键 key 属于哪个槽， 其中 CRC16(key) 语句用于计算键 key 的 CRC16 校验和 。
 * 集群中的每个节点负责处理一部分插槽
-![5e151fde563ad3fe33f27f5f7993a39b.png](en-resource://database/2397:1)
+
+![https://github.com/kocdaniel/BigData/blob/master/img/%E8%8A%82%E7%82%B9%E6%8F%92%E6%A7%BD.png](https://github.com/kocdaniel/BigData/blob/master/img/节点插槽.png)
+
 * 如图所示，
 * 节点 6379 负责处理 0 号至 5460 号插槽。
 * 节点 6380 负责处理 5461 号至 10922 号插槽。
