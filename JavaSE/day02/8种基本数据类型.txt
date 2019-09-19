@@ -1,0 +1,85 @@
+	** 8种基本数据类型 : 
+	* 整型 :                  占用存储空间                                  表数范围
+		byte		1byte     **    										-128~127
+		short		2byte	  ****					 						-32768~32767
+		int			4byte	  ********										-20多亿~20多亿
+		long		8byte  	  ****************								-巨大~巨大
+	* 浮点型
+		float		4byte	  ********										-10^38~10^38
+		double		8byte	  ****************								-10^308~10^308
+	* 字符型
+		char		2byte	  ****                                          0 ~ 65535
+	* 布尔型
+		boolean		1byte 	  **				true, false                 不支持强制类型转换
+
+
+	* 数据范围从小到大
+    * byte < short < int < long < float < double 	
+	* char < int < long < float < double 
+		
+class VariableTest2 {
+	
+	public static void main(String[] args) {
+		byte b1 = 10; 
+		short s1 = 20;
+		int i1 = 30; 
+		long l1 = 40;
+		
+		//s1 = b1 + s1; // 任意非long整数作运算, 结果总是int型
+		s1 = (short)(b1 + s1);
+		//i1 = l1 + i1; // 混合数据类型运算时, 结果总是类型范围最大的那种类型
+		i1 = (int)l1 + i1;
+		i1 = (int)(l1 + i1);
+		
+		float f1 = 3.22F;
+		double d1 = 4.82;
+		
+		l1 = (long)(f1 * i1);
+		
+		d1 = d1 + i1 * l1 / f1; // 执行过程 , 扫描出范围最大的类型, 再把所有运算数升级为最大型, 再运算.
+		
+		// 数据范围从小到大
+		// byte < short < int < long < float < double 
+		
+		//d1 = 可以是任意数值型
+	}
+}
+
+public class VariableTest {
+	
+	public static void main(String[] args) {
+		{
+			int n = 10;
+		}
+		int n = 20;
+		
+		byte b1 = 10; // 编译器检查字面量的值是否在byte范围内
+		short s1 = 20;
+		int i1 = 30; // 整数字面量默认使用4个字节的int型来存储
+		long l1 = 40;
+		long l2 = 4240234234L; // L的作用是告诉编译器请使用8字节的long来保存这个字面量.
+		
+		s1 = b1;
+		//b1 = s1;
+		// 强制类型转换, (目标类型)量值; 
+		b1 = (byte)s1; // 写操作
+		
+		// 常量 : 内容不可改变的量, 常量包括字面量及被final修饰的量
+		
+		//50 = 50; // 保存左边值的量不是变量, 而是常量, 不能被写入
+		
+		//i1 = l1; 
+		i1 = (short)l1;
+		l1 = s1;
+		
+		double d1 = .324; // .324是字面量, 浮点数的字面量默认是double型
+		//float f1 = .324;
+		float f1 = (float).324;
+		float f2 = 8.22F; // F的作用是告诉编译器8.22这个字面量请使用4个字节的float保存.
+		
+		l1 = (long)f2;
+		
+		// 结论 : 范围小的量值可以直接给范围大的变量赋值, 范围大的量值不可以直接给范围小的变量赋值, 必须要通过强制类型转换才可以
+		l1 = i1;
+	}
+}
