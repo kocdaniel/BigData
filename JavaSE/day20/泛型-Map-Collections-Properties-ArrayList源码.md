@@ -3,12 +3,9 @@
 ## 为什么要有泛型
 
 * 解决元素存储的安全性问题
-
 * 解决获取数据元素时，需要类型强转的问题
 
-![1565609647173](C:\Users\gengqing\AppData\Roaming\Typora\typora-user-images\1565609647173.png)
-
-![1565609706641](C:\Users\gengqing\AppData\Roaming\Typora\typora-user-images\1565609706641.png)
+![https://github.com/kocdaniel/BigData/blob/master/img/%E6%B3%9B%E5%9E%8B.png](https://github.com/kocdaniel/BigData/blob/master/img/泛型.png)
 
 ## 核心思想
 
@@ -256,7 +253,7 @@ class C<T> extends A<T> {}
  * 或者也可以看成是一个Set集合, 只不过它的元素是Entry对象, Entry对象内部有两个对象, 一个是key对象, 一个是value对象
  * key 与 value 之间存在**单向的一对一关系**，即：通过指定的 key 总能找到唯一确定的 value 。
 
-- ![1565834630861](C:\Users\gengqing\AppData\Roaming\Typora\typora-user-images\1565834630861.png)
+![Map](https://github.com/kocdaniel/BigData/blob/master/img/Map.png)
 
 ## 方法
 
