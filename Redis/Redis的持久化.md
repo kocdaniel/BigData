@@ -15,7 +15,7 @@
 
 ## rdb文件的保存路径
 * 默认为 ./，即redis服务启动时所在的当前目录下，可以修改
-* ![1568864432733](C:\Users\gengqing\AppData\Roaming\Typora\typora-user-images\1568864432733.png)
+* ![1568864432733](https://github.com/kocdaniel/BigData/blob/master/img/redis%E6%96%87%E4%BB%B6%E7%9A%84%E4%BF%9D%E5%AD%98%E8%B7%AF%E5%BE%84.png)
 
 ## rdb保存策略（自动保存快照策略）
 ![1568864454094](C:\Users\gengqing\AppData\Roaming\Typora\typora-user-images\1568864454094.png)
