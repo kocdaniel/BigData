@@ -36,7 +36,7 @@
 
 ## Redis
 
-* Redis相关笔记
+* [Redis相关笔记](https://github.com/kocdaniel/BigData/tree/master/Redis)
 
 
 
