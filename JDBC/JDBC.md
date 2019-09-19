@@ -2,11 +2,11 @@
 
 * **JDBC(Java Database Connectivity)**是一个独立于特定数据库管理系统**、**通用的SQL数据库存取和操作的**公共接口**（一组API），定义了用来访问数据库的标准Java类库，（java.sql,javax.sql）使用这个类库可以以一种标准的方法、方便地访问数据库资源
 
-![1566557385616](C:\Users\gengqing\AppData\Roaming\Typora\typora-user-images\1566557385616.png)
+![jdbc1](https://github.com/kocdaniel/BigData/blob/master/img/jdbc1.png)
 
-![1566557418439](C:\Users\gengqing\AppData\Roaming\Typora\typora-user-images\1566557418439.png)
+![jdbc2](https://github.com/kocdaniel/BigData/blob/master/img/jdbc2.png)
 
-![1566557519703](C:\Users\gengqing\AppData\Roaming\Typora\typora-user-images\1566557519703.png)
+![jdbc3](https://github.com/kocdaniel/BigData/blob/master/img/jdbc3.png)
 
 ## 加载mysql的driver
 
