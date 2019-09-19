@@ -15,11 +15,11 @@
 
 ## rdb文件的保存路径
 * 默认为 ./，即redis服务启动时所在的当前目录下，可以修改
-* ![1568864432733](C:\Users\gengqing\AppData\Roaming\Typora\typora-user-images\1568864432733.png)
+* ![1568864432733](https://github.com/kocdaniel/BigData/blob/master/img/redis%E6%96%87%E4%BB%B6%E7%9A%84%E4%BF%9D%E5%AD%98%E8%B7%AF%E5%BE%84.png)
 
 ## rdb保存策略（自动保存快照策略）
-![1568864454094](C:\Users\gengqing\AppData\Roaming\Typora\typora-user-images\1568864454094.png)
-![1568864472685](C:\Users\gengqing\AppData\Roaming\Typora\typora-user-images\1568864472685.png)
+![1568864454094](https://github.com/kocdaniel/BigData/blob/master/img/rdb%E4%BF%9D%E5%AD%98%E7%AD%96%E7%95%A51.png)
+![1568864472685](https://github.com/kocdaniel/BigData/blob/master/img/redis%E4%BF%9D%E5%AD%98%E7%AD%96%E7%95%A52.png)
 
 ## 手动保存快照
 * 命令：
@@ -67,12 +67,12 @@
 
 ## redis.conf配置文件信息
 ### AOF默认不开启，需要手动在配置文件中配置
-![1568864518687](C:\Users\gengqing\AppData\Roaming\Typora\typora-user-images\1568864518687.png)
+![1568864518687](https://github.com/kocdaniel/BigData/blob/master/img/AOF%E5%BC%80%E5%90%AF.png)
 * 改为yes即可开启
 
 ### 设置配置文件名称，默认为appendonly.aof
 
-![1568864542761](C:\Users\gengqing\AppData\Roaming\Typora\typora-user-images\1568864542761.png)
+![1568864542761](https://github.com/kocdaniel/BigData/blob/master/img/AOF%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%90%8D%E7%A7%B0.png)
 
 ### AOF文件的保存路径与RDB一致
 ### AOF与RDB同时开启，系统默认读取AOF的数据
@@ -81,7 +81,7 @@
 * `redis-check-aof  --fix  appendonly.aof `  进行恢复
 
 ### AOF同步频率设置
-![1568864567772](C:\Users\gengqing\AppData\Roaming\Typora\typora-user-images\1568864567772.png)
+![1568864567772](https://github.com/kocdaniel/BigData/blob/master/img/AOF%E5%90%8C%E6%AD%A5%E9%A2%91%E7%8E%87.png)
 
 * 始终同步，每次redis的写入都会立刻记入日志
 * 每秒同步，每秒记录一次，如果宕机，本秒的数据可能丢失
@@ -96,7 +96,7 @@
 
 #### 何时重写
 * 重写虽然可以节约大量磁盘空间，减少恢复时间。但是每次重写还是有一定的负担的，因此设定Redis要满足一定条件才会进行重写。
-* ![1568864590883](C:\Users\gengqing\AppData\Roaming\Typora\typora-user-images\1568864590883.png)
+* ![1568864590883](https://github.com/kocdaniel/BigData/blob/master/img/rewrite%E9%87%8D%E5%86%99%E6%9C%BA%E5%88%B6.png)
 * 系统载入时或者上次重写完毕时，Redis会记录此时AOF大小，设为base_size,如果`Redis的AOF当前大小>= base_size +base_size*100% (默认)且当前大小>=64mb(默认)`的情况下，Redis会对AOF进行重写。
 
 ## 优缺点
