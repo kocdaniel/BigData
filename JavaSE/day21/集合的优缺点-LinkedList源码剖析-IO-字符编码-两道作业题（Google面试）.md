@@ -284,7 +284,7 @@ bufferedWriter = new BufferedWriter(osw);
 
 ### 图示
 
-![1565780149744](C:\Users\gengqing\AppData\Roaming\Typora\typora-user-images\1565780149744.png)
+![https://github.com/kocdaniel/BigData/blob/master/img/%E8%A7%A3%E7%A0%81%E7%BC%96%E7%A0%81.png](https://github.com/kocdaniel/BigData/blob/master/img/解码编码.png)
 
 ## 对象流
 
@@ -435,9 +435,9 @@ bufferedWriter = new BufferedWriter(osw);
 
 ## 重点
 
-![1565957078073](C:\Users\gengqing\AppData\Roaming\Typora\typora-user-images\1565957078073.png)
+![https://github.com/kocdaniel/BigData/blob/master/img/%E6%B5%81%E7%9A%84%E5%88%86%E7%B1%BB1.png](https://github.com/kocdaniel/BigData/blob/master/img/流的分类1.png)
 
-![1565957216102](C:\Users\gengqing\AppData\Roaming\Typora\typora-user-images\1565957216102.png)
+![https://github.com/kocdaniel/BigData/blob/master/img/%E6%B5%81%E7%9A%84%E5%88%86%E7%B1%BB2.png](https://github.com/kocdaniel/BigData/blob/master/img/流的分类2.png)
 
 # 字符编码
 
