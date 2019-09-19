@@ -115,7 +115,7 @@ cd  /opt/redis-3.2.5/src  // 切换到src目录下，因为要执行src下的red
 ```
 7. 通过 `cluster nodes` 命令查看集群信息，可通过红框框住的序列号找到主从关系
 
-![https://github.com/kocdaniel/BigData/blob/master/img/cluster%20nodes.png](https://github.com/kocdaniel/BigData/blob/master/img/cluster nodes.png)
+![2](https://github.com/kocdaniel/BigData/blob/master/img/clusternodes.png)
 
 ## 什么是slots
 
