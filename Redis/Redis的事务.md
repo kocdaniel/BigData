@@ -21,7 +21,7 @@
 2. 执行时错误：如果执行时某个命令发生错误，则只有报错的命令不执行，其他命令会依次执行，而不会发生回滚
 
 **如图：只有error处不执行**
-[!https://github.com/kocdaniel/BigData/blob/master/img/%E6%89%A7%E8%A1%8C%E6%97%B6%E9%94%99%E8%AF%AF.png](https://github.com/kocdaniel/BigData/blob/master/img/执行时错误.png)
+![https://github.com/kocdaniel/BigData/blob/master/img/%E6%89%A7%E8%A1%8C%E6%97%B6%E9%94%99%E8%AF%AF.png](https://github.com/kocdaniel/BigData/blob/master/img/执行时错误.png)
 
 # 为什么要做成事务
 * 解决事务冲突的问题
