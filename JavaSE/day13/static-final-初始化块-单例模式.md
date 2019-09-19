@@ -192,7 +192,8 @@ class Singleton2 {
 
 * 注：暂时懒汉式还存在线程安全问题，讲到多线程时，可修复
 * 典型的单例：java.lang.Runtime
-* ![1564745970663](C:\Users\gengqing\AppData\Roaming\Typora\typora-user-images\1564745970663.png)
+
+![https://github.com/kocdaniel/BigData/blob/master/img/%E5%85%B8%E5%9E%8B%E7%9A%84%E5%8D%95%E4%BE%8B.png](https://github.com/kocdaniel/BigData/blob/master/img/典型的单例.png)
 
 # 初始化块
 
