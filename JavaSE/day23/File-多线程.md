@@ -123,7 +123,7 @@ public class ThreadTest {
  4. 阻塞 (sleep, join, wait, 同步)
  5. 死亡 (run结束) 
 
-![1565958127065](C:\Users\gengqing\AppData\Roaming\Typora\typora-user-images\1565958127065.png)
+![https://github.com/kocdaniel/BigData/blob/master/img/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2%E5%9B%BE.png](https://github.com/kocdaniel/BigData/blob/master/img/线程状态转换图.png)
 
 ### 线程分类 :
 

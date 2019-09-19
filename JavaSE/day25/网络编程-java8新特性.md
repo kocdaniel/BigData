@@ -168,7 +168,7 @@
 
 ### Stream的操作三个步骤
 
-![1566215100894](C:\Users\gengqing\AppData\Roaming\Typora\typora-user-images\1566215100894.png)
+![https://github.com/kocdaniel/BigData/blob/master/img/%E6%B5%81%E6%93%8D%E4%BD%9C%E7%9A%84%E4%B8%89%E4%B8%AA%E6%AD%A5%E9%AA%A4.png](https://github.com/kocdaniel/BigData/blob/master/img/流操作的三个步骤.png)
 
 1. **创建Stream**： 一个数据源（如：集合、数组），获取一个流
    * 1) 基于集合获取流 ：集合对象.stream()
