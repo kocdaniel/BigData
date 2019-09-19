@@ -9,19 +9,19 @@
 * 组队的过程中可以通过discard来放弃组队
 * 如下图：
 
-[https://github.com/kocdaniel/BigData/blob/master/img/redis%E4%BA%8B%E5%8A%A1%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B.png](https://github.com/kocdaniel/BigData/blob/master/img/redis事务执行过程.png)
+![https://github.com/kocdaniel/BigData/blob/master/img/redis%E4%BA%8B%E5%8A%A1%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B.png](https://github.com/kocdaniel/BigData/blob/master/img/redis事务执行过程.png)
 
 ## 事务的错误处理
 1. 组队时错误：组队中某个命令出现错误，执行时整个的所有队列都会取消而不执行
 
 **如图：Exec不执行**
 
-[https://github.com/kocdaniel/BigData/blob/master/img/%E7%BB%84%E9%98%9F%E6%97%B6%E9%94%99%E8%AF%AF.png](https://github.com/kocdaniel/BigData/blob/master/img/组队时错误.png)
+![https://github.com/kocdaniel/BigData/blob/master/img/%E7%BB%84%E9%98%9F%E6%97%B6%E9%94%99%E8%AF%AF.png](https://github.com/kocdaniel/BigData/blob/master/img/组队时错误.png)
 
 2. 执行时错误：如果执行时某个命令发生错误，则只有报错的命令不执行，其他命令会依次执行，而不会发生回滚
 
 **如图：只有error处不执行**
-[https://github.com/kocdaniel/BigData/blob/master/img/%E6%89%A7%E8%A1%8C%E6%97%B6%E9%94%99%E8%AF%AF.png](https://github.com/kocdaniel/BigData/blob/master/img/执行时错误.png)
+[!https://github.com/kocdaniel/BigData/blob/master/img/%E6%89%A7%E8%A1%8C%E6%97%B6%E9%94%99%E8%AF%AF.png](https://github.com/kocdaniel/BigData/blob/master/img/执行时错误.png)
 
 # 为什么要做成事务
 * 解决事务冲突的问题
@@ -39,7 +39,7 @@
 * Redis就是利用这种check-and-set机制，实现事务
 
 ### 理解悲观锁与乐观锁
-[https://github.com/kocdaniel/BigData/blob/master/img/%E6%82%B2%E8%A7%82%E9%94%81%E4%B8%8E%E4%B9%90%E8%A7%82%E9%94%81.png](https://github.com/kocdaniel/BigData/blob/master/img/悲观锁与乐观锁.png)
+![https://github.com/kocdaniel/BigData/blob/master/img/%E6%82%B2%E8%A7%82%E9%94%81%E4%B8%8E%E4%B9%90%E8%A7%82%E9%94%81.png](https://github.com/kocdaniel/BigData/blob/master/img/悲观锁与乐观锁.png)
 
 ## WATCH key [key ...]
 * 在执行multi之前，先执行watch key1[key2...]，可以监视一个（或多个）key
