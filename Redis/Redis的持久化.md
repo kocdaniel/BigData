@@ -11,7 +11,7 @@
 ## redis.conf配置文件中的信息
 ### rdb保存的文件
 * 在redis.conf中，默认为dump.rdb
-* ![1568864387751](C:\Users\gengqing\AppData\Roaming\Typora\typora-user-images\1568864387751.png)
+* ![1568864387751](https://github.com/kocdaniel/BigData/blob/master/img/rdb.png)
 
 ## rdb文件的保存路径
 * 默认为 ./，即redis服务启动时所在的当前目录下，可以修改
