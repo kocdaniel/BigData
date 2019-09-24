@@ -44,9 +44,9 @@
 
 ## Shell
 
-* [Shell编程]([https://github.com/kocdaniel/BigData/blob/master/Shell/Shell%E7%BC%96%E7%A8%8B.md](https://github.com/kocdaniel/BigData/blob/master/Shell/Shell编程.md))
+* [Shell编程](https://github.com/kocdaniel/BigData/blob/master/Shell/Shell编程.md)
 
 ## Hadoop
 
-* [Hadoop之完全分布式集群]([https://github.com/kocdaniel/BigData/blob/master/Hadoop/Hadoop%E4%B9%8B%E5%AE%8C%E5%85%A8%E5%88%86%E5%B8%83%E5%BC%8F%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F.md](https://github.com/kocdaniel/BigData/blob/master/Hadoop/Hadoop之完全分布式运行模式.md))
+* [Hadoop之完全分布式集群](https://github.com/kocdaniel/BigData/blob/master/Hadoop/Hadoop之完全分布式运行模式.md)
 
