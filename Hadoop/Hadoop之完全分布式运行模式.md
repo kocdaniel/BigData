@@ -95,7 +95,7 @@ done
   * 配置`hadoop-env.sh`
 
   ```shell
-  [atguigu@hadoop102 hadoop]$ vim hadoop-env.sh
+  [kocdaniel@hadoop102 hadoop]$ vim hadoop-env.sh
   export JAVA_HOME=/opt/module/jdk1.8.0_144
   ```
 
@@ -106,7 +106,7 @@ done
   * 配置`hdfs-site.xml`
 
   ```shell
-  [atguigu@hadoop102 hadoop]$ vim hdfs-site.xml
+  [kocdaniel@hadoop102 hadoop]$ vim hdfs-site.xml
   # 写入如下配置
   <!-- 配置副本数量为3，默认也为3，所以这个也可以删掉 -->
   <property>
@@ -126,14 +126,14 @@ done
   * 配置`yarn-env.sh`
 
   ```shell
-  [atguigu@hadoop102 hadoop]$ vim yarn-env.sh
+  [kocdaniel@hadoop102 hadoop]$ vim yarn-env.sh
   export JAVA_HOME=/opt/module/jdk1.8.0_144
   ```
 
   * 配置`yarn-site.xml`
 
   ```shell
-  [atguigu@hadoop102 hadoop]$ vi yarn-site.xml
+  [kocdaniel@hadoop102 hadoop]$ vi yarn-site.xml
   # 增加如下配置
   <!-- Reducer获取数据的方式 -->
   <property>
@@ -153,7 +153,7 @@ done
   * 配置`mapred-env.sh`
 
   ```shell
-  [atguigu@hadoop102 hadoop]$ vim mapred-env.sh
+  [kocdaniel@hadoop102 hadoop]$ vim mapred-env.sh
   export JAVA_HOME=/opt/module/jdk1.8.0_144
   ```
 
@@ -161,8 +161,8 @@ done
 
   ```shell
   # 如果是第一次配置的话，需要先将mapred-site.xml.template重命名为mapred-site.xml
-  [atguigu@hadoop102 hadoop]$ cp mapred-site.xml.template mapred-site.xml
-  [atguigu@hadoop102 hadoop]$ vim mapred-site.xml
+  [kocdaniel@hadoop102 hadoop]$ cp mapred-site.xml.template mapred-site.xml
+  [kocdaniel@hadoop102 hadoop]$ vim mapred-site.xml
   # 在文件中增加如下配置
   <!-- 指定MR运行在Yarn上 -->
   <property>
@@ -174,7 +174,7 @@ done
 3. 将配置好的文件利用集群分发脚本同步到hadoop103和hadoop104节点
 
 ```shell
-[atguigu@hadoop102 hadoop]$ xsync /opt/module/hadoop-2.7.2/
+[kocdaniel@hadoop102 hadoop]$ xsync /opt/module/hadoop-2.7.2/
 ```
 
 * 最好在同步完成之后检查一下同步结果，避免错误
@@ -184,7 +184,7 @@ done
 1. 如果是**第一次**启动，需要格式化namenode，否则跳过此步
 
 ```shell
-[atguigu@hadoop102 hadoop-2.7.2]$ hadoop namenode -format
+[kocdaniel@hadoop102 hadoop-2.7.2]$ hadoop namenode -format
 ```
 
 * 格式化需要**注意**的问题：
@@ -197,25 +197,25 @@ done
 2. 在hadoop102上启动namenode
 
 ```shell
-[atguigu@hadoop102 hadoop-2.7.2]$ hadoop-daemon.sh start namenode
-[atguigu@hadoop102 hadoop-2.7.2]$ jps
+[kocdaniel@hadoop102 hadoop-2.7.2]$ hadoop-daemon.sh start namenode
+[kocdaniel@hadoop102 hadoop-2.7.2]$ jps
 3461 NameNode
 ```
 
 3. 在hadoop102、hadoop103以及hadoop104上分别启动DataNode
 
 ```shell
-[atguigu@hadoop102 hadoop-2.7.2]$ hadoop-daemon.sh start datanode
-[atguigu@hadoop102 hadoop-2.7.2]$ jps
+[kocdaniel@hadoop102 hadoop-2.7.2]$ hadoop-daemon.sh start datanode
+[kocdaniel@hadoop102 hadoop-2.7.2]$ jps
 3461 NameNode
 3608 Jps
 3561 DataNode
-[atguigu@hadoop103 hadoop-2.7.2]$ hadoop-daemon.sh start datanode
-[atguigu@hadoop103 hadoop-2.7.2]$ jps
+[kocdaniel@hadoop103 hadoop-2.7.2]$ hadoop-daemon.sh start datanode
+[kocdaniel@hadoop103 hadoop-2.7.2]$ jps
 3190 DataNode
 3279 Jps
-[atguigu@hadoop104 hadoop-2.7.2]$ hadoop-daemon.sh start datanode
-[atguigu@hadoop104 hadoop-2.7.2]$ jps
+[kocdaniel@hadoop104 hadoop-2.7.2]$ hadoop-daemon.sh start datanode
+[kocdaniel@hadoop104 hadoop-2.7.2]$ jps
 3237 Jps
 3163 DataNode
 ```
@@ -235,24 +235,24 @@ done
 
    * 免密登录原理
 
-   ![1569326608911](C:\Users\gengqing\AppData\Roaming\Typora\typora-user-images\1569326608911.png)
+   ![1569326608911](https://mmbiz.qpic.cn/mmbiz_png/hlLEC0QP5QV039Z20n7Y9YxfwD9mEAy0ZDpFOKuIoEeaKdraF3zc7j6HnLEnq8JoS7ezVDAE0w0QnDibAHER6Qg/0?wx_fmt=png)
 
    * 在配置namenode的主机hadoop102上生成私钥和公钥
 
      * 切换目录到`/home/用户名/.ssh/`
 
      ```shell
-     [atguigu@hadoop102 .ssh]$ ssh-keygen -t rsa
+     [kocdaniel@hadoop102 .ssh]$ ssh-keygen -t rsa
      ```
 
      * 然后敲（三个回车），就会生成两个文件id_rsa（私钥）、id_rsa.pub（公钥）
      * 将公钥拷贝到要免密登录的目标机器上
 
      ```shell
-     [atguigu@hadoop102 .ssh]$ ssh-copy-id hadoop103
-     [atguigu@hadoop102 .ssh]$ ssh-copy-id hadoop104
+     [kocdaniel@hadoop102 .ssh]$ ssh-copy-id hadoop103
+     [kocdaniel@hadoop102 .ssh]$ ssh-copy-id hadoop104
      # 注意：ssh访问自己也需要输入密码，所以我们需要将公钥也拷贝给102
-     [atguigu@hadoop102 .ssh]$ ssh-copy-id hadoop102
+     [kocdaniel@hadoop102 .ssh]$ ssh-copy-id hadoop102
      ```
 
    * 同样，在配置resourcemanager的主机hadoop103上执行同样的操作，然后就可以群起集群了
@@ -265,7 +265,7 @@ done
    * 在目录下的slaves文件中添加如下内容
 
    ```shell
-   [atguigu@hadoop102 hadoop]$ vim slaves
+   [kocdaniel@hadoop102 hadoop]$ vim slaves
    # 注意结尾不能有空格，文件中不能有空行
    hadoop102
    hadoop103
@@ -275,7 +275,7 @@ done
    * 同步所有节点的配置文件
 
    ```shell
-   [atguigu@hadoop102 hadoop]$ xsync slaves
+   [kocdaniel@hadoop102 hadoop]$ xsync slaves
    ```
 
    
@@ -286,7 +286,7 @@ done
    * 启动HDFS
 
    ```shell
-   [atguigu@hadoop102 hadoop-2.7.2]$ sbin/start-dfs.sh
+   [kocdaniel@hadoop102 hadoop-2.7.2]$ sbin/start-dfs.sh
    
    # 查看启动结果，和集群规划（配置文件中）的一致
    [atguigu@hadoop102 hadoop-2.7.2]$ jps
@@ -308,7 +308,7 @@ done
 
    ```shell
    # 注意：NameNode和ResourceManger如果不是同一台机器，不能在NameNode上启动 YARN，应该在ResouceManager所在的机器上启动YARN
-   [atguigu@hadoop103 hadoop-2.7.2]$ sbin/start-yarn.sh
+   [kocdaniel@hadoop103 hadoop-2.7.2]$ sbin/start-yarn.sh
    ```
 
 3. web端查看相关信息
