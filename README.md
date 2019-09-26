@@ -50,5 +50,5 @@
 
 * [Hadoop之完全分布式集群](https://github.com/kocdaniel/BigData/blob/master/Hadoop/Hadoop之完全分布式运行模式.md)
 
-* [浅谈HDFS（一）之数据的读写流程]([https://github.com/kocdaniel/BigData/blob/master/Hadoop/%E6%B5%85%E8%B0%88HDFS%EF%BC%88%E4%B8%80%EF%BC%89.md](https://github.com/kocdaniel/BigData/blob/master/Hadoop/浅谈HDFS（一）.md))
+* [浅谈HDFS（一）之数据的读写流程](https://github.com/kocdaniel/BigData/blob/master/Hadoop/浅谈HDFS（一）.md)
 
