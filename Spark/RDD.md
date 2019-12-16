@@ -1816,7 +1816,7 @@ println(wordToCountRDD.collect().mkString(","))
       (v1: Int, v2: Int) => v1 + v2,
       (v1: Int, v2: Int) => v1 + v2
     )
-    combineByKeyRDD.collect().foreach(println)c
+    combineByKeyRDD.collect().foreach(println)
 ```
 
 ### WordCount -7 & 8
@@ -1841,7 +1841,7 @@ println(wordToCountRDD.collect().mkString(","))
     println(rdd.countByValue())
 ```
 
-### WordCount - 9 & 10
+### WordCount - 只用countByKey和countByValue实现如下形式的wordcount
 
 ```scala
 // 只用countByKey实现如下rdd的wordcount
@@ -1878,6 +1878,53 @@ println(flatMapRDD.countByKey())
         }
 // countByValue的value表示的含义要清楚
 println(flatMapRDD.countByValue())
+```
+
+
+
+### WordCount - 9 & 10 
+
+```scala
+ val dataRDD = sc.makeRDD(List("Hello","Hello","Hello","Hello","Hbase","Hbase","Hbase","Scala","Spark"))
+
+
+    // wordcount - 9 使用行动算子：aggregate
+//    val wordToCount: mutable.Map[String, Int] = dataRDD.aggregate(mutable.Map[String, Int]())(
+//      (map, word) => {
+//        map(word) = map.getOrElse(word, 0) + 1
+//        map
+//      },
+//
+//      (map1, map2) => {
+//        map1.foldLeft(map2)(
+//          (innerMap, kv) => {
+//            val word = kv._1
+//            val count = kv._2
+//            innerMap(word) = innerMap.getOrElse(word, 0) + count
+//            innerMap
+//          }
+//        )
+//      }
+//    )
+//    println(wordToCount)
+
+    // wordcount - 10 使用行动算子：fold
+    // fold分区内和分区间计算规则相同，所以首先应该先把分区内的数据由string转为map
+    dataRDD.map(str => mutable.Map(str->1)).fold(mutable.Map[String, Int]())(
+
+      (map1, map2)=>{
+        // 两个map合并用foldLeft
+        map1.foldLeft(map2)(
+          (innerMap, kv)=>{
+            val word = kv._1
+            val count = kv._2
+
+            innerMap(word) = innerMap.getOrElse(word, 0) + count
+            innerMap
+          }
+        )
+      }
+    ).foreach(println)
 ```
 
 
